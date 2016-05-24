@@ -10,7 +10,7 @@ public class TestRover {
 	{
 	  Rover rover = new Rover(new SimpleCardinalsPoints('E'));
 	  rover.turnRight();
-	  assertEquals('S', rover.getDirection()); 
+	  assertEquals('S', rover.getDirection());
 	}
 	
 	@Test

@@ -36,7 +36,8 @@ public class SimpleCardinalsPoints implements CardinalPoints {
 		else
 			currentDirectionInDegrees -= 90;
 		
-		char direction = this.getCardinalDirectionAgainstDegrees(currentDirectionInDegrees % 360);
+		char direction = this.getCardinalPointAgainstDegrees(currentDirectionInDegrees % 360);
+		
 		if(direction != ' ') {
 			this.direction = direction;
 			System.out.println("[Turn Left] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees));
@@ -48,7 +49,7 @@ public class SimpleCardinalsPoints implements CardinalPoints {
 	@Override
 	public boolean spinRight() {
 		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
-		char direction = this.getCardinalDirectionAgainstDegrees((currentDirectionInDegrees + 90) % 360);
+		char direction = this.getCardinalPointAgainstDegrees((currentDirectionInDegrees + 90) % 360);
 		
 		if(direction != ' ') {
 			this.direction = direction;
@@ -58,7 +59,7 @@ public class SimpleCardinalsPoints implements CardinalPoints {
 		return false;
 	}
 	
-	private char getCardinalDirectionAgainstDegrees(int degrees)
+	private char getCardinalPointAgainstDegrees(int degrees)
 	{
 		for(Entry<Character, Integer> entry: cardinalPoints.entrySet())
 		{
