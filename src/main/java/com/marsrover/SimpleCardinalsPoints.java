@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class SimpleRoverDirection implements RoverDirection{
+public class SimpleCardinalsPoints implements CardinalPoints {
 	private char direction;
 	private static final Map<Character, Integer> cardinalPoints = new HashMap<Character, Integer>();
 	
@@ -16,7 +16,7 @@ public class SimpleRoverDirection implements RoverDirection{
 		cardinalPoints.put('W', 270);
 	}
 	
-	public SimpleRoverDirection(char direction) {
+	public SimpleCardinalsPoints(char direction) {
 		this.direction = direction;
 	}
 	

@@ -6,9 +6,9 @@ import java.util.Map.Entry;
 
 public class Rover {
   
-	RoverDirection direction;
+	CardinalPoints direction;
 	
-	public Rover(RoverDirection direction)
+	public Rover(CardinalPoints direction)
 	{
 		this.direction = direction;
 	}
