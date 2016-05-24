@@ -30,11 +30,10 @@ public class SimpleCardinalsPoints implements CardinalPoints {
 	public boolean spinLeft() {
 		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
 		
+		currentDirectionInDegrees -= 90;
 		// If after turning left the degrees go in negative then just add 360 to get the correct cardinal point
-		if(currentDirectionInDegrees - 90 < 0)
-			currentDirectionInDegrees = (currentDirectionInDegrees -90) + 360;
-		else
-			currentDirectionInDegrees -= 90;
+		if(currentDirectionInDegrees < 0)
+			currentDirectionInDegrees = currentDirectionInDegrees + 360;
 		
 		char direction = this.getCardinalPointAgainstDegrees(currentDirectionInDegrees % 360);
 		
