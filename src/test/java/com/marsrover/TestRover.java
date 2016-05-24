@@ -8,7 +8,7 @@ public class TestRover {
 	@Test
 	public void testRoverRightTurnEastToSouth()
 	{
-	  Rover rover = new Rover('E');
+	  Rover rover = new Rover(new SimpleRoverDirection('E'));
 	  rover.turnRight();
 	  assertEquals('S', rover.getDirection());
 	}
@@ -16,7 +16,7 @@ public class TestRover {
 	@Test
 	public void testRoverRightTurnWestToNorth()
 	{
-	  Rover rover = new Rover('W');
+	  Rover rover = new Rover(new SimpleRoverDirection('W'));
 	  rover.turnRight();
 	  assertEquals('N', rover.getDirection());
 	}
@@ -24,7 +24,7 @@ public class TestRover {
 	@Test
 	public void testRoverLeftTurnSouthToEast()
 	{
-	  Rover rover = new Rover('S');
+	  Rover rover = new Rover(new SimpleRoverDirection('S'));
 	  rover.turnLeft();
 	  assertEquals('E', rover.getDirection());
 	}
@@ -32,7 +32,7 @@ public class TestRover {
 	@Test
 	public void testRoverLeftTurnNorthToWest()
 	{
-	  Rover rover = new Rover('N');
+	  Rover rover = new Rover(new SimpleRoverDirection('N'));
 	  rover.turnLeft();
 	  assertEquals('W', rover.getDirection());
 	}
