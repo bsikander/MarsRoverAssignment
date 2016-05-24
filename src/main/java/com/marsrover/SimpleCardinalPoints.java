@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class SimpleCardinalsPoints implements CardinalPoints {
+public class SimpleCardinalPoints implements CardinalPoints {
 	private char direction;
 	private static final Map<Character, Integer> cardinalPoints = new HashMap<Character, Integer>();
 	
@@ -16,7 +16,7 @@ public class SimpleCardinalsPoints implements CardinalPoints {
 		cardinalPoints.put('W', 270);
 	}
 	
-	public SimpleCardinalsPoints(char direction) {
+	public SimpleCardinalPoints(char direction) {
 		this.direction = direction;
 	}
 	
@@ -60,10 +60,8 @@ public class SimpleCardinalsPoints implements CardinalPoints {
 	
 	private char getCardinalPointAgainstDegrees(int degrees)
 	{
-		for(Entry<Character, Integer> entry: cardinalPoints.entrySet())
-		{
-			if(entry.getValue().equals(degrees))
-			{
+		for(Entry<Character, Integer> entry: cardinalPoints.entrySet()) {
+			if(entry.getValue().equals(degrees)) {
 				return entry.getKey();
 			}
 		}
