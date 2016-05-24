@@ -3,14 +3,17 @@ package com.marsrover;
 public class Rover {
   
 	private CardinalPoints direction;
-	private int xCoordinate;
-	private int yCoordinate;
+	private Point position;
+//	private int xCoordinate;
+//	private int yCoordinate;
 	
-	public Rover(int xCoordinate, int yCoordinate, CardinalPoints direction)
+	//public Rover(int xCoordinate, int yCoordinate, CardinalPoints direction)
+	public Rover(Point position, CardinalPoints direction)
 	{
 		this.direction = direction;
-		this.xCoordinate = xCoordinate;
-		this.yCoordinate = yCoordinate;
+		this.position = position;
+//		this.xCoordinate = xCoordinate;
+//		this.yCoordinate = yCoordinate;
 	}
 	
 	public boolean turnRight()
@@ -26,29 +29,33 @@ public class Rover {
 	public boolean move()
 	{
 		if(this.getDirection() == 'N') {
-			if(this.yCoordinate + 1 > 5) return false;
-			this.yCoordinate += 1;
+			if(this.position.getYCoordinate() + 1 > 5) return false;
+			this.position.setYCoordinate(this.position.getYCoordinate() + 1);
 		}
 		else if(this.getDirection() == 'E') {
-			if(this.xCoordinate + 1 > 5) return false;
-			this.xCoordinate += 1;
+			if(this.position.getXCoordinate() + 1 > 5) return false;
+			this.position.setXCoordinate(this.position.getXCoordinate() + 1);
+			System.out.println("[MOVE] Point Position -> X: " + this.position.getXCoordinate() +  "Y: " + this.position.getYCoordinate());;
 		}
 		else if (this.getDirection() == 'S') {
-			if(this.yCoordinate - 1 < 0) return false;
-			this.yCoordinate -= 1;
+			if(this.position.getYCoordinate() - 1 < 0) return false;
+			this.position.setYCoordinate(this.position.getYCoordinate() - 1);
 		}
 		else if (this.getDirection() == 'W') {
-			if(this.xCoordinate - 1 < 0) return false;
-			this.xCoordinate -= 1;
+			if(this.position.getXCoordinate() - 1 < 0) return false;
+			this.position.setXCoordinate(this.position.getXCoordinate() - 1);
 		}
-		
 		return true;
 	}
 	
-	public char getDirection()
-	{
+	public char getDirection() {
 		return this.direction.getDirection(); 
 	}
+	
+	public Point getPosition() {
+		return this.position;
+	}
+	
 	
 	@Override
 	public boolean equals(Object other) {
@@ -57,8 +64,7 @@ public class Rover {
 		if(!(other instanceof Rover)) return false;
 		
 		Rover otherRover = (Rover)other;
-		if (this.xCoordinate == otherRover.xCoordinate &&
-			this.yCoordinate == otherRover.yCoordinate &&
+		if (this.position.equals(otherRover.position) &&
 			this.direction.getDirection() == otherRover.getDirection())
 			return true;
 		
