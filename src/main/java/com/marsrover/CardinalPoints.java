@@ -1,14 +1,32 @@
 package com.marsrover;
 
-/**
- * This interface represents a simple abstraction on top of Cardinal points.
- * 
- * @author Behroz Sikander
- * @version 1.0
- */
-public interface CardinalPoints {
-	public char getDirection();
-	public void rotateLeft();
-	public void rotateRight();
-	public Point getOneGridPointInCurrentDirection();
+public abstract class CardinalPoints {
+	protected char direction;
+	protected int degrees;
+	protected Point oneGridBlock;
+	protected int offset;
+	
+	public CardinalPoints(int degrees, int offset) {
+		this.degrees = degrees;
+		this.offset = offset;
+	}
+	
+	public int rotate() {
+		return ((this.degrees + this.offset) % 360);
+	}
+	
+	//private int offset;
+	
+//	public CardinalPoints(char direction, int offset) {
+//		this.offset = offset;
+//	}
+	
+//	public void rotate() {
+//		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
+//		char direction = this.getCardinalPointAgainstDegrees( 
+//																(currentDirectionInDegrees + offset) % 360 
+//															);
+//		this.direction = direction;
+//	}
+	
 }

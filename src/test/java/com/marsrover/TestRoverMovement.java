@@ -16,30 +16,30 @@ public class TestRoverMovement {
 	public void testRoverMoveForwardFrom00NTo01N() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(0,0), 
-								new SimpleCardinalPoints('N'));
+								new SimpleCardinalManager('N'));
 		rover.move();
 		assertEquals(rover, new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
 									  new Point(0,1), 
-									  new SimpleCardinalPoints('N')));
+									  new SimpleCardinalManager('N')));
 	}
 	
 	@Test
 	public void testRoverMoveForwardFrom00ETo10E() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(0,0), 
-								new SimpleCardinalPoints('E'));
+								new SimpleCardinalManager('E'));
 		rover.move();
 		
 		assertEquals(rover, new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 									  new Point(1,0), 
-									  new SimpleCardinalPoints('E')));
+									  new SimpleCardinalManager('E')));
 	}
 	
 	@Test
 	public void testRoverMoveForwardFrom00SShouldFail() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(0,0), 
-								new SimpleCardinalPoints('S'));
+								new SimpleCardinalManager('S'));
 		
 		assertEquals(rover.move() , false);
 	}
@@ -48,7 +48,7 @@ public class TestRoverMovement {
 	public void testRoverMoveForwardFrom05NShouldFail() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(0,5), 
-								new SimpleCardinalPoints('N'));
+								new SimpleCardinalManager('N'));
 		
 		assertEquals(rover.move() , false);
 	}
@@ -57,7 +57,7 @@ public class TestRoverMovement {
 	public void testRoverMoveForwardFrom50EShouldFail() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(5,0), 
-								new SimpleCardinalPoints('E'));
+								new SimpleCardinalManager('E'));
 		
 		assertEquals(rover.move() , false);
 	}
@@ -66,7 +66,7 @@ public class TestRoverMovement {
 	public void testRoverMoveForwardFrom05WShouldFail() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(0,5), 
-								new SimpleCardinalPoints('W'));
+								new SimpleCardinalManager('W'));
 		
 		assertEquals(rover.move() , false);
 	}

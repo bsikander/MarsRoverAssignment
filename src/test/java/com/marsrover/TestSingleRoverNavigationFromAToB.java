@@ -16,7 +16,7 @@ public class TestSingleRoverNavigationFromAToB {
 	public void testRoverMovementFrom12NTo13NUsingLMLMLMLMM() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(1,2), 
-								new SimpleCardinalPoints('N'));
+								new SimpleCardinalManager('N'));
 		//LM LM LM LM M
 		rover.turnLeft(); 
 		rover.move();
@@ -34,14 +34,14 @@ public class TestSingleRoverNavigationFromAToB {
 		
 		assertEquals(rover, new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
 				  new Point(1,3), 
-				  new SimpleCardinalPoints('N')));
+				  new SimpleCardinalManager('N')));
 	}
 	
 	@Test
 	public void testRoverMovementFrom33ETo51EUsingMMRMMRMRRM() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(3,3), 
-								new SimpleCardinalPoints('E'));
+								new SimpleCardinalManager('E'));
 		//MM RM MR MR RM
 		rover.move();
 		rover.move();
@@ -60,14 +60,14 @@ public class TestSingleRoverNavigationFromAToB {
 		
 		assertEquals(rover, new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
 				  new Point(5,1), 
-				  new SimpleCardinalPoints('E')));
+				  new SimpleCardinalManager('E')));
 	}
 	
 	@Test
 	public void testRoverMovementFrom33ETo53EUsingMMRMMRMRRMOnPlateauOfSize44ShouldFail() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(4,4)),
 				new Point(3,3), 
-				new SimpleCardinalPoints('E'));
+				new SimpleCardinalManager('E'));
 		
 		rover.move();
 		
@@ -81,7 +81,7 @@ public class TestSingleRoverNavigationFromAToB {
 	public void testRoverMovementFrom00NTo55NUsingMRMLMRMLMRMLMRMLMRMLMR() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 								new Point(0,0), 
-								new SimpleCardinalPoints('N'));
+								new SimpleCardinalManager('N'));
 		
 		//MR ML MR ML MR ML MR ML MR ML MR
 		rover.move();		// Reached (0,1)
@@ -116,6 +116,6 @@ public class TestSingleRoverNavigationFromAToB {
 		
 		assertEquals(rover, new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
 				  new Point(5,5), 
-				  new SimpleCardinalPoints('N')));
+				  new SimpleCardinalManager('N')));
 	}
 }

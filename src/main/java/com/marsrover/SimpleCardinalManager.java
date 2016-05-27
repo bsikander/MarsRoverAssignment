@@ -10,7 +10,7 @@ import java.util.Map.Entry;
  * @author Behroz Sikander
  * @version 1.0
  */
-public class SimpleCardinalPoints implements CardinalPoints {
+public class SimpleCardinalManager implements CardinalManager {
 	private char direction;
 	private static final Map<Character, Integer> cardinalPoints = new HashMap<Character, Integer>();
 	
@@ -22,7 +22,7 @@ public class SimpleCardinalPoints implements CardinalPoints {
 		cardinalPoints.put('W', 270);
 	}
 	
-	public SimpleCardinalPoints(char direction) {
+	public SimpleCardinalManager(char direction) {
 		this.direction = direction;
 	}
 	

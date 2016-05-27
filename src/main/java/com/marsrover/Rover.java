@@ -10,11 +10,11 @@ package com.marsrover;
  */
 public class Rover {
   
-	private CardinalPoints direction;
+	private CardinalManager direction;
 	private Point position;
 	private Plateau plateau;
 	
-	public Rover(Plateau plateau, Point position, CardinalPoints direction)
+	public Rover(Plateau plateau, Point position, CardinalManager direction)
 	{
 		this.direction = direction;
 		this.position = position;
