@@ -66,5 +66,4 @@ public class TestRoverMovement {
 								new SimpleCardinalPoints('W'));
 		assertEquals(rover.move() , false);
 	}
-
 }
