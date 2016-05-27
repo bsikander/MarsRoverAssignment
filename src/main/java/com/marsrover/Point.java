@@ -42,8 +42,8 @@ public class Point implements Comparable<Point> {
 	public int compareTo(Point that) {
 //		System.out.println("[CompareTo] This -> " + this.toString() + " That ->" + that.toString());
 		if(this.xCoordinate == that.xCoordinate && this.yCoordinate == that.yCoordinate) return 0;
-		if(this.xCoordinate > that.xCoordinate && this.yCoordinate > that.yCoordinate) return +1;
-		if(this.xCoordinate > that.xCoordinate && this.yCoordinate == that.yCoordinate) return +1;
+		if(this.xCoordinate > that.xCoordinate  && this.yCoordinate > that.yCoordinate) return +1;
+		if(this.xCoordinate > that.xCoordinate  && this.yCoordinate == that.yCoordinate) return +1;
 		if(this.xCoordinate == that.xCoordinate && this.yCoordinate > that.yCoordinate) return +1;
 		
 		return -1;
@@ -54,20 +54,3 @@ public class Point implements Comparable<Point> {
         return "(" + this.xCoordinate + ", " + this.yCoordinate + ")";
     }
 }
-
-//public int getXCoordinate() {
-//return this.xCoordinate;
-//}
-//
-//public void setXCoordinate(int newXCoordinate) {
-//this.xCoordinate = newXCoordinate;
-//}
-//
-//public void setYCoordinate(int newYCoordinate) {
-//this.yCoordinate = newYCoordinate;
-//}
-//
-//public int getYCoordinate() {
-//return this.yCoordinate;
-//}
-
