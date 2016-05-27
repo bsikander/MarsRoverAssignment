@@ -1,5 +1,12 @@
 package com.marsrover;
 
+/**
+ * This class presents the mutable reusable implementation of 2d Point.  
+ * It also implements the Comparable interface for comparing two points.
+ * 
+ * @author Behroz Sikander
+ * @version 1.0
+ */
 public class Point implements Comparable<Point> {
 	private int xCoordinate;
 	private int yCoordinate;
@@ -14,6 +21,12 @@ public class Point implements Comparable<Point> {
 		this.yCoordinate = point.yCoordinate;
 	}
 	
+	/**
+	 * This function adds a Point to the current Point instance. This function
+	 * helps other classes in operating on a higher layer of abstraction.
+	 * 
+	 * @param newPoint The Point which needs to be added.
+	 */
 	public void add(Point newPoint) {
 		
 		this.xCoordinate += newPoint.xCoordinate;
@@ -34,13 +47,14 @@ public class Point implements Comparable<Point> {
 	}
 
 	/**
-	 * Compares two points to figure out where both point lie relative to each other.
-	 * @return The current "this" Point should be greater than "that" Point. If yes, then return +1.
-	 * If no, then return -1 and if both points are equal then return 0.
+	 * Compares two points to figure out which point lie higher than the other.
+	 * 
+	 * @return +1 if one Point is greater than other
+	 * 		   -1 if one Point is less than the other
+	 *          0 if both points are same
 	 */
 	@Override
 	public int compareTo(Point that) {
-//		System.out.println("[CompareTo] This -> " + this.toString() + " That ->" + that.toString());
 		if(this.xCoordinate == that.xCoordinate && this.yCoordinate == that.yCoordinate) return 0;
 		if(this.xCoordinate > that.xCoordinate  && this.yCoordinate > that.yCoordinate) return +1;
 		if(this.xCoordinate > that.xCoordinate  && this.yCoordinate == that.yCoordinate) return +1;
