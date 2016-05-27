@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestRoverMovements {
+public class TestRoverMovement {
 
 	@Test
 	public void testRoverMoveForwardFrom00NTo01N()
