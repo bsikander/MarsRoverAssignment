@@ -4,26 +4,23 @@ public class Rover {
   
 	private CardinalPoints direction;
 	private Point position;
-//	private int xCoordinate;
-//	private int yCoordinate;
 	
-	//public Rover(int xCoordinate, int yCoordinate, CardinalPoints direction)
 	public Rover(Point position, CardinalPoints direction)
 	{
 		this.direction = direction;
 		this.position = position;
-//		this.xCoordinate = xCoordinate;
-//		this.yCoordinate = yCoordinate;
 	}
 	
 	public boolean turnRight()
 	{
-		return this.direction.spinRight();
+		this.direction.rotateRight();
+		return this.isValidDirection();
 	}
 	
 	public boolean turnLeft()
 	{
-		return this.direction.spinLeft();
+		this.direction.rotateLeft();
+		return this.isValidDirection();
 	}
 	
 	public boolean move()
@@ -54,6 +51,10 @@ public class Rover {
 	
 	public Point getPosition() {
 		return this.position;
+	}
+	
+	private boolean isValidDirection() {
+		return this.direction.getDirection() != ' ' ? true : false;
 	}
 	
 	

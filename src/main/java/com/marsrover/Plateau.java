@@ -1,8 +1,18 @@
 package com.marsrover;
 
-public final class Plateau {
+public class Plateau {
 
-	private Plateau() {}
+	private Point upperRightCoordinates;
+	private Point lowerLeftCoordinates;
+	
+	public Plateau(Point lowerLeftCoordinates,Point upperRightCoordinates) {
+		this.lowerLeftCoordinates = lowerLeftCoordinates;
+		this.upperRightCoordinates = upperRightCoordinates;
+	}
+	
+	
+	
+	 
 	
 	
 }

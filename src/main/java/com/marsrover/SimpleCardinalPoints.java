@@ -27,35 +27,33 @@ public class SimpleCardinalPoints implements CardinalPoints {
 	}
 	
 	@Override
-	public boolean spinLeft() {
+	public void rotateLeft() {
 		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
-		
-		currentDirectionInDegrees -= 90;
-		// If after turning left the degrees go in negative then just add 360 to get the correct cardinal point
-		if(currentDirectionInDegrees < 0)
-			currentDirectionInDegrees = currentDirectionInDegrees + 360;
-		
-		char direction = this.getCardinalPointAgainstDegrees(currentDirectionInDegrees % 360);
-		
-		if(direction != ' ') {
-			this.direction = direction;
-			System.out.println("[Turn Left] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees));
-			return true;
-		}
-		return false;
+		char direction = this.getCardinalPointAgainstDegrees((currentDirectionInDegrees + 270) % 360);
+		this.direction = direction;
+		System.out.println("[Turn Left] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees));
+
+		//		if(direction != ' ') {
+//			this.direction = direction;
+//			System.out.println("[Turn Left] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees));
+//			return true;
+//		}
+//		return false;
 	}
 
 	@Override
-	public boolean spinRight() {
+	public void rotateRight() {
 		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
 		char direction = this.getCardinalPointAgainstDegrees((currentDirectionInDegrees + 90) % 360);
-		
-		if(direction != ' ') {
-			this.direction = direction;
-			System.out.println("[Turn Right] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees + 90));
-			return true;
-		}
-		return false;
+		this.direction = direction;
+		System.out.println("[Turn Right] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees + 90));
+		//return direction;
+//		if(direction != ' ') {
+//			this.direction = direction;
+//			System.out.println("[Turn Right] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees + 90));
+//			return true;
+//		}
+//		return false;
 	}
 	
 	private char getCardinalPointAgainstDegrees(int degrees)
