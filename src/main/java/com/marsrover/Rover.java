@@ -4,11 +4,13 @@ public class Rover {
   
 	private CardinalPoints direction;
 	private Point position;
+	private Plateau plateau;
 	
-	public Rover(Point position, CardinalPoints direction)
+	public Rover(Plateau plateau, Point position, CardinalPoints direction)
 	{
 		this.direction = direction;
 		this.position = position;
+		this.plateau = plateau;
 	}
 	
 	public boolean turnRight()
@@ -25,24 +27,23 @@ public class Rover {
 	
 	public boolean move()
 	{
-		if(this.getDirection() == 'N') {
-			if(this.position.getYCoordinate() + 1 > 5) return false;
-			this.position.setYCoordinate(this.position.getYCoordinate() + 1);
+		Point nextPointInCurrentDirection = this.direction.getPointInCurrentDirection();
+		// TODO: Handles the case 0,0 here
+		
+		// Create a temporary point object because we first want to verify if the
+		// rover is in plateau or not. Once we have verified and it is in plateau,
+		// we will assign the new temporary position to the current position of rover.
+		Point newProposedRoverPosition = new Point(this.position);
+		newProposedRoverPosition.add(nextPointInCurrentDirection);
+		
+		boolean isRoverInPlateau = this.plateau.contains(newProposedRoverPosition);
+		//System.out.println("Position: " + this.position.toString() + " New Position in Direction: " + nextPointInCurrentDirection.toString() + " Added Point: " + temp.toString() + " Result of Contains: " + isRoverInPlateau);
+		if(isRoverInPlateau) {
+			this.position = newProposedRoverPosition;
+			return true;
 		}
-		else if(this.getDirection() == 'E') {
-			if(this.position.getXCoordinate() + 1 > 5) return false;
-			this.position.setXCoordinate(this.position.getXCoordinate() + 1);
-			System.out.println("[MOVE] Point Position -> X: " + this.position.getXCoordinate() +  "Y: " + this.position.getYCoordinate());;
-		}
-		else if (this.getDirection() == 'S') {
-			if(this.position.getYCoordinate() - 1 < 0) return false;
-			this.position.setYCoordinate(this.position.getYCoordinate() - 1);
-		}
-		else if (this.getDirection() == 'W') {
-			if(this.position.getXCoordinate() - 1 < 0) return false;
-			this.position.setXCoordinate(this.position.getXCoordinate() - 1);
-		}
-		return true;
+		else 
+			return false;
 	}
 	
 	public char getDirection() {

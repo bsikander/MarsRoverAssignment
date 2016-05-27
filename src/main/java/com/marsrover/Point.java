@@ -1,6 +1,6 @@
 package com.marsrover;
 
-public class Point {
+public class Point implements Comparable<Point> {
 	private int xCoordinate;
 	private int yCoordinate;
 	
@@ -9,20 +9,15 @@ public class Point {
 		this.yCoordinate = yCoordinate;
 	}
 	
-	public int getXCoordinate() {
-		return this.xCoordinate;
+	public Point(Point point) {
+		this.xCoordinate = point.xCoordinate;
+		this.yCoordinate = point.yCoordinate;
 	}
 	
-	public void setXCoordinate(int newXCoordinate) {
-		this.xCoordinate = newXCoordinate;
-	}
-	
-	public void setYCoordinate(int newYCoordinate) {
-		this.yCoordinate = newYCoordinate;
-	}
-	
-	public int getYCoordinate() {
-		return this.yCoordinate;
+	public void add(Point newPoint) {
+		
+		this.xCoordinate += newPoint.xCoordinate;
+		this.yCoordinate += newPoint.yCoordinate;
 	}
 	
 	@Override
@@ -37,4 +32,42 @@ public class Point {
 			
 		return false;
 	}
+
+	/**
+	 * Compares two points to figure out where both point lie relative to each other.
+	 * @return The current "this" Point should be greater than "that" Point. If yes, then return +1.
+	 * If no, then return -1 and if both points are equal then return 0.
+	 */
+	@Override
+	public int compareTo(Point that) {
+//		System.out.println("[CompareTo] This -> " + this.toString() + " That ->" + that.toString());
+		if(this.xCoordinate == that.xCoordinate && this.yCoordinate == that.yCoordinate) return 0;
+		if(this.xCoordinate > that.xCoordinate && this.yCoordinate > that.yCoordinate) return +1;
+		if(this.xCoordinate > that.xCoordinate && this.yCoordinate == that.yCoordinate) return +1;
+		if(this.xCoordinate == that.xCoordinate && this.yCoordinate > that.yCoordinate) return +1;
+		
+		return -1;
+	}
+	
+	@Override
+	public String toString() {
+        return "(" + this.xCoordinate + ", " + this.yCoordinate + ")";
+    }
 }
+
+//public int getXCoordinate() {
+//return this.xCoordinate;
+//}
+//
+//public void setXCoordinate(int newXCoordinate) {
+//this.xCoordinate = newXCoordinate;
+//}
+//
+//public void setYCoordinate(int newYCoordinate) {
+//this.yCoordinate = newYCoordinate;
+//}
+//
+//public int getYCoordinate() {
+//return this.yCoordinate;
+//}
+
