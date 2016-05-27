@@ -1,5 +1,13 @@
 package com.marsrover;
 
+/**
+ * This class represents a Rover and all of its possible actions. Instead of directly
+ * manipulating the cardinal points, this class uses an abstraction on top to avoid
+ * change (e.g. this program can be extended to use intermediate directions N,NE,E,...).  
+ * 
+ * @author Behroz Sikander
+ * @version 1.0
+ */
 public class Rover {
   
 	private CardinalPoints direction;
@@ -27,7 +35,7 @@ public class Rover {
 	
 	public boolean move()
 	{
-		Point nextPointInCurrentDirection = this.direction.getPointInCurrentDirection();
+		Point nextPointInCurrentDirection = this.direction.getOneGridPointInCurrentDirection();
 		// TODO: Handles the case 0,0 here
 		
 		// Create a temporary point object because we first want to verify if the

@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * This class represents simple cardinal system.
+ * 
+ * @author Behroz Sikander
+ * @version 1.0
+ */
 public class SimpleCardinalPoints implements CardinalPoints {
 	private char direction;
 	private static final Map<Character, Integer> cardinalPoints = new HashMap<Character, Integer>();
@@ -28,27 +34,29 @@ public class SimpleCardinalPoints implements CardinalPoints {
 	
 	@Override
 	public void rotateLeft() {
-		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
-		char direction = this.getCardinalPointAgainstDegrees((currentDirectionInDegrees + 270) % 360);
-		this.direction = direction;
-		//System.out.println("[Turn Left] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees));
+		this.rotate(/* offset */ 270);
 	}
 
 	@Override
 	public void rotateRight() {
-		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
-		char direction = this.getCardinalPointAgainstDegrees((currentDirectionInDegrees + 90) % 360);
-		this.direction = direction;
-		//System.out.println("[Turn Right] Current Key -> " + direction + " Degrees -> " + (currentDirectionInDegrees + 90));
+		this.rotate(/* offset */ 90);
 	}
 	
 	@Override
-	public Point getPointInCurrentDirection() {
+	public Point getOneGridPointInCurrentDirection() {
 		if     (this.direction == 'N') return new Point(0,1);
 		else if(this.direction == 'E') return new Point(1,0);
 		else if(this.direction == 'S') return new Point(0,-1);
 		else if(this.direction == 'W') return new Point(-1,0);
 		else return new Point(0,0);
+	}
+	
+	private void rotate(int offset) {
+		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
+		char direction = this.getCardinalPointAgainstDegrees( 
+																(currentDirectionInDegrees + offset) % 360 
+															);
+		this.direction = direction;
 	}
 	
 	private char getCardinalPointAgainstDegrees(int degrees)

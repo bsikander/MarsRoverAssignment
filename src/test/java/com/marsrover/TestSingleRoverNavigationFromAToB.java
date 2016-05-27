@@ -1,9 +1,15 @@
 package com.marsrover;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
-
+/**
+ * This class is responsible for verifying rover navigation based on
+ * a series on rotate and move commands. 
+ * 
+ * @author Behroz Sikander
+ * @version 1.0
+ */
 public class TestSingleRoverNavigationFromAToB {
 
 	@Test
@@ -58,11 +64,11 @@ public class TestSingleRoverNavigationFromAToB {
 	}
 	
 	@Test
-	public void testRoverMovementFrom33EToMMRMMRMRRMOnPlateauOfSize44ShouldFail() {
+	public void testRoverMovementFrom33ETo53EUsingMMRMMRMRRMOnPlateauOfSize44ShouldFail() {
 		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(4,4)),
 				new Point(3,3), 
 				new SimpleCardinalPoints('E'));
-		//MM RM MR MR RM
+		
 		rover.move();
 		
 		// This move tries to move the rover to (5,3) whereas the plateau is only of

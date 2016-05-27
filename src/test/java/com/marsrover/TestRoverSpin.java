@@ -1,13 +1,19 @@
 package com.marsrover;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
+/**
+ * The testcases in this class are responsible for verifying the rotation of 
+ * rover in normal and corner cases.
+ * 
+ * @author Behroz Sikander
+ * @version 1.0
+ */
 public class TestRoverSpin {
 
 	@Test
-	public void testRoverRightTurnFromEastToSouth()
-	{
+	public void testRoverRightTurnFromEastToSouth() {
 	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalPoints('E'));
@@ -16,8 +22,7 @@ public class TestRoverSpin {
 	}
 	
 	@Test
-	public void testRoverRightTurnFromWestToNorth()
-	{
+	public void testRoverRightTurnFromWestToNorth() {
 	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalPoints('W'));
@@ -26,8 +31,7 @@ public class TestRoverSpin {
 	}
 	
 	@Test
-	public void testRoverLeftTurnFromSouthToEast()
-	{
+	public void testRoverLeftTurnFromSouthToEast() {
 	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalPoints('S'));
@@ -36,8 +40,7 @@ public class TestRoverSpin {
 	}
 	
 	@Test
-	public void testRoverLeftTurnFromNorthToWest()
-	{
+	public void testRoverLeftTurnFromNorthToWest() {
 	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalPoints('N'));
