@@ -14,10 +14,7 @@ public abstract class CardinalPoint {
 	}
 	
 	public int rotate(int offset) {
-		//return ((this.degrees + this.offset) % 360);
-		int newDegrees = ((this.degrees + offset) % 360);
-		System.out.println("CARDINAL POINT: degree -> " + this.degrees + " offset -> " + offset + " newDegrees -> " + newDegrees);
-		return newDegrees;
+		return ((this.degrees + offset) % 360);
 	}
 	
 	public Point getOneGridBlock() {
@@ -49,19 +46,4 @@ public abstract class CardinalPoint {
 	public String toString() {
         return "(" + this.direction + ", " + this.degrees + ")";
     }
-	
-	//private int offset;
-	
-//	public CardinalPoints(char direction, int offset) {
-//		this.offset = offset;
-//	}
-	
-//	public void rotate() {
-//		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
-//		char direction = this.getCardinalPointAgainstDegrees( 
-//																(currentDirectionInDegrees + offset) % 360 
-//															);
-//		this.direction = direction;
-//	}
-	
 }
