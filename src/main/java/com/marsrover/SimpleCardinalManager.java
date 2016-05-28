@@ -3,12 +3,7 @@ package com.marsrover;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.marsrover.CardinalPoint.CardinalPoint;
-import com.marsrover.CardinalPoint.East;
-import com.marsrover.CardinalPoint.North;
-import com.marsrover.CardinalPoint.NullCardinalPoint;
-import com.marsrover.CardinalPoint.South;
-import com.marsrover.CardinalPoint.West;
+import com.marsrover.CardinalPoint.*;
 
 /**
  * This class represents simple cardinal system.
