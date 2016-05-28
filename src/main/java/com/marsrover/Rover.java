@@ -1,5 +1,7 @@
 package com.marsrover;
 
+import com.marsrover.CardinalPoint.CardinalPoint;
+
 /**
  * This class represents a Rover and all of its possible actions. Instead of directly
  * manipulating the cardinal points, this class uses an abstraction on top to avoid
@@ -10,32 +12,30 @@ package com.marsrover;
  */
 public class Rover {
   
-	private CardinalPoints direction;
+	private CardinalManager cardinalManager;
 	private Point position;
 	private Plateau plateau;
 	
-	public Rover(Plateau plateau, Point position, CardinalPoints direction)
+	public Rover(Plateau plateau, Point position, CardinalManager direction)
 	{
-		this.direction = direction;
+		this.cardinalManager = direction;
 		this.position = position;
 		this.plateau = plateau;
 	}
 	
 	public boolean turnRight()
 	{
-		this.direction.rotateRight();
-		return this.isValidDirection();
+		return this.cardinalManager.rotateRight();
 	}
 	
 	public boolean turnLeft()
 	{
-		this.direction.rotateLeft();
-		return this.isValidDirection();
+		return this.cardinalManager.rotateLeft();
 	}
 	
 	public boolean move()
 	{
-		Point nextPointInCurrentDirection = this.direction.getOneGridPointInCurrentDirection();
+		Point nextPointInCurrentDirection = this.cardinalManager.getOneGridPointInCurrentDirection();
 		// TODO: Handles the case 0,0 here
 		
 		// Create a temporary point object because we first want to verify if the
@@ -50,22 +50,16 @@ public class Rover {
 			this.position = newProposedRoverPosition;
 			return true;
 		}
-		else 
-			return false;
+		return false;
 	}
 	
-	public char getDirection() {
-		return this.direction.getDirection(); 
+	public CardinalPoint getDirection() {
+		return this.cardinalManager.getCardinalPoint(); 
 	}
 	
 	public Point getPosition() {
 		return this.position;
 	}
-	
-	private boolean isValidDirection() {
-		return this.direction.getDirection() != ' ' ? true : false;
-	}
-	
 	
 	@Override
 	public boolean equals(Object other) {
@@ -75,7 +69,7 @@ public class Rover {
 		
 		Rover otherRover = (Rover)other;
 		if (this.position.equals(otherRover.position) &&
-			this.direction.getDirection() == otherRover.getDirection())
+			this.cardinalManager.getCardinalPoint().equals(otherRover.getDirection()))
 			return true;
 		
 		return false;
