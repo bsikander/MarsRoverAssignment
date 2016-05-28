@@ -1,6 +1,12 @@
 package com.marsrover;
 
 import org.junit.Test;
+
+import com.marsrover.CardinalPoint.East;
+import com.marsrover.CardinalPoint.North;
+import com.marsrover.CardinalPoint.South;
+import com.marsrover.CardinalPoint.West;
+
 import static org.junit.Assert.*;
 
 /**
@@ -16,35 +22,36 @@ public class TestRoverSpin {
 	public void testRoverRightTurnFromEastToSouth() {
 	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 			  				  new Point(0,0), 
-			  				  new SimpleCardinalManager('E'));
+			  				  new SimpleCardinalManager(new East()));
 	  rover.turnRight();
-	  assertEquals('S', rover.getDirection());
+	  rover.getDirection().toString();
+	  assertEquals(new South(), rover.getDirection());
 	}
 	
 	@Test
 	public void testRoverRightTurnFromWestToNorth() {
 	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
 			  				  new Point(0,0), 
-			  				  new SimpleCardinalManager('W'));
+			  				  new SimpleCardinalManager(new West()));
 	  rover.turnRight();
-	  assertEquals('N', rover.getDirection());
+	  assertEquals(new North(), rover.getDirection());
 	}
 	
 	@Test
 	public void testRoverLeftTurnFromSouthToEast() {
 	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 			  				  new Point(0,0), 
-			  				  new SimpleCardinalManager('S'));
+			  				  new SimpleCardinalManager(new South()));
 	  rover.turnLeft();
-	  assertEquals('E', rover.getDirection());
+	  assertEquals(new East(), rover.getDirection());
 	}
 	
 	@Test
 	public void testRoverLeftTurnFromNorthToWest() {
 	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
 			  				  new Point(0,0), 
-			  				  new SimpleCardinalManager('N'));
+			  				  new SimpleCardinalManager(new North()));
 	  rover.turnLeft();
-	  assertEquals('W', rover.getDirection());
+	  assertEquals(new West(), rover.getDirection());
 	}
 }

@@ -1,8 +1,17 @@
 package com.marsrover;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import com.marsrover.CardinalPoint.CardinalPoint;
+import com.marsrover.CardinalPoint.East;
+import com.marsrover.CardinalPoint.North;
+import com.marsrover.CardinalPoint.NullCardinalPoint;
+import com.marsrover.CardinalPoint.South;
+import com.marsrover.CardinalPoint.West;
 
 /**
  * This class represents simple cardinal system.
@@ -11,30 +20,36 @@ import java.util.Map.Entry;
  * @version 1.0
  */
 public class SimpleCardinalManager implements CardinalManager {
-	private char direction;
-	private static final Map<Character, Integer> cardinalPoints = new HashMap<Character, Integer>();
+	private CardinalPoint cardinalPoint;
+	//private static final Map<Character, Integer> cardinalPoints = new HashMap<Character, Integer>();
+	private static final List<CardinalPoint> cardinalPoints = new ArrayList<CardinalPoint>();
 	
 	static
 	{
-		cardinalPoints.put('N', 0);
-		cardinalPoints.put('E', 90);
-		cardinalPoints.put('S', 180);
-		cardinalPoints.put('W', 270);
+		cardinalPoints.add(new North());
+		cardinalPoints.add(new East());
+		cardinalPoints.add(new South());
+		cardinalPoints.add(new West());
+		//		cardinalPoints.put('N', 0);
+//		cardinalPoints.put('E', 90);
+//		cardinalPoints.put('S', 180);
+//		cardinalPoints.put('W', 270);
 	}
 	
-	public SimpleCardinalManager(char direction) {
-		this.direction = direction;
+	public SimpleCardinalManager(CardinalPoint direction) {
+		this.cardinalPoint = direction;
 	}
 	
 	@Override
-	public char getDirection()
+	public CardinalPoint getDirection()
 	{
-		return this.direction;
+		return this.cardinalPoint;
 	}
 	
 	@Override
 	public void rotateLeft() {
 		this.rotate(/* offset */ 270);
+		
 	}
 
 	@Override
@@ -44,29 +59,47 @@ public class SimpleCardinalManager implements CardinalManager {
 	
 	@Override
 	public Point getOneGridPointInCurrentDirection() {
-		if     (this.direction == 'N') return new Point(0,1);
-		else if(this.direction == 'E') return new Point(1,0);
-		else if(this.direction == 'S') return new Point(0,-1);
-		else if(this.direction == 'W') return new Point(-1,0);
-		else return new Point(0,0);
+		return this.cardinalPoint.getOneGridBlock();
+//		if     (this.direction == 'N') return new Point(0,1);
+//		else if(this.direction == 'E') return new Point(1,0);
+//		else if(this.direction == 'S') return new Point(0,-1);
+//		else if(this.direction == 'W') return new Point(-1,0);
+//		else return new Point(0,0);
 	}
 	
 	private void rotate(int offset) {
-		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
-		char direction = this.getCardinalPointAgainstDegrees( 
-																(currentDirectionInDegrees + offset) % 360 
-															);
-		this.direction = direction;
+		CardinalPoint newCardinalPoint = this.getCardinalPointAgainstDegrees(
+															this.cardinalPoint.rotate(/* offset */ offset)
+																			);
+		//TODO: HANDLE NULL -- NULL OBJECT PATTERN
+		
+		this.cardinalPoint = newCardinalPoint;
+		
+		
+//		int currentDirectionInDegrees = cardinalPoints.get(this.direction);
+//		char direction = this.getCardinalPointAgainstDegrees( 
+//																(currentDirectionInDegrees + offset) % 360 
+//															);
+//		this.direction = direction;
 	}
 	
-	private char getCardinalPointAgainstDegrees(int degrees)
-	{
-		for(Entry<Character, Integer> entry: cardinalPoints.entrySet()) {
-			if(entry.getValue().equals(degrees)) {
-				return entry.getKey();
+	private CardinalPoint getCardinalPointAgainstDegrees(int degrees) {
+		for(CardinalPoint cardinalPoint: cardinalPoints) {
+			if(cardinalPoint.compareDegrees(degrees)) {
+				return cardinalPoint;
 			}
 		}
-		return ' ';
+		return new NullCardinalPoint();
 	}
+	
+//	private char getCardinalPointAgainstDegrees(int degrees)
+//	{
+//		for(Entry<Character, Integer> entry: cardinalPoints.entrySet()) {
+//			if(entry.getValue().equals(degrees)) {
+//				return entry.getKey();
+//			}
+//		}
+//		return ' ';
+//	}
 
 }
