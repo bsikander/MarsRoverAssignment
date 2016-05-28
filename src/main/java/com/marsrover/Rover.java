@@ -45,7 +45,7 @@ public class Rover {
 		newProposedRoverPosition.add(nextPointInCurrentDirection);
 		
 		boolean isRoverInPlateau = this.plateau.contains(newProposedRoverPosition);
-		//System.out.println("Position: " + this.position.toString() + " New Position in Direction: " + nextPointInCurrentDirection.toString() + " Added Point: " + temp.toString() + " Result of Contains: " + isRoverInPlateau);
+		
 		if(isRoverInPlateau) {
 			this.position = newProposedRoverPosition;
 			return true;
