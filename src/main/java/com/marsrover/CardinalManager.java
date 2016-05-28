@@ -1,6 +1,6 @@
 package com.marsrover;
 
-import com.marsrover.CardinalPoint.CardinalPoint;
+import com.marsrover.CardinalPoint.*;
 
 /**
  * This interface represents a simple abstraction on top of Cardinal points.
@@ -9,8 +9,8 @@ import com.marsrover.CardinalPoint.CardinalPoint;
  * @version 1.0
  */
 public interface CardinalManager {
-	public CardinalPoint getDirection();
-	public void rotateLeft();
-	public void rotateRight();
+	public CardinalPoint getCardinalPoint();
+	public boolean rotateLeft();
+	public boolean rotateRight();
 	public Point getOneGridPointInCurrentDirection();
 }

@@ -25,14 +25,12 @@ public class Rover {
 	
 	public boolean turnRight()
 	{
-		this.cardinalManager.rotateRight();
-		return this.isValidDirection();
+		return this.cardinalManager.rotateRight();
 	}
 	
 	public boolean turnLeft()
 	{
-		this.cardinalManager.rotateLeft();
-		return this.isValidDirection();
+		return this.cardinalManager.rotateLeft();
 	}
 	
 	public boolean move()
@@ -52,23 +50,16 @@ public class Rover {
 			this.position = newProposedRoverPosition;
 			return true;
 		}
-		else 
-			return false;
+		return false;
 	}
 	
 	public CardinalPoint getDirection() {
-		return this.cardinalManager.getDirection(); 
+		return this.cardinalManager.getCardinalPoint(); 
 	}
 	
 	public Point getPosition() {
 		return this.position;
 	}
-	
-	private boolean isValidDirection() {
-		//TODO: Remove this direction
-		return this.cardinalManager.getDirection().isValid() ? true : false;
-	}
-	
 	
 	@Override
 	public boolean equals(Object other) {
@@ -78,7 +69,7 @@ public class Rover {
 		
 		Rover otherRover = (Rover)other;
 		if (this.position.equals(otherRover.position) &&
-			this.cardinalManager.getDirection().equals(otherRover.getDirection()))
+			this.cardinalManager.getCardinalPoint().equals(otherRover.getDirection()))
 			return true;
 		
 		return false;
