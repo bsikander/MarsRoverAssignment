@@ -1,6 +1,14 @@
 package com.marsrover;
 
-import com.marsrover.cardinalpoint.CardinalDirection;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.marsrover.cardinaldirection.CardinalDirection;
+import com.marsrover.cardinalmanager.CardinalManager;
+import com.marsrover.commands.Command;
+import com.marsrover.commands.MoveForward;
+import com.marsrover.commands.TurnLeft;
+import com.marsrover.commands.TurnRight;
 
 /**
  * This class represents a Rover and all of its possible actions. Instead of directly
@@ -15,47 +23,62 @@ public class Rover {
 	private CardinalManager cardinalManager;
 	private Point position;
 	private Plateau plateau;
+	private Map<Character, Command> commandMap;	
 	
 	public Rover(Plateau plateau, Point position, CardinalManager direction)
 	{
 		this.cardinalManager = direction;
 		this.position = position;
 		this.plateau = plateau;
+		
+		commandMap = new HashMap<>();
+		commandMap.put('L', new TurnLeft(this.cardinalManager));
+		commandMap.put('R', new TurnRight(this.cardinalManager));
+		commandMap.put('M', new MoveForward(this));
 	}
 	
-	public boolean performActions(String command) {
+	public boolean performActions(String commands) {
 		
-		for(int i = 0; i< command.length() ; i++) {
-			char action = command.charAt(i);
-			if(action == 'L') {
-				this.turnLeft();
-				System.out.println("Turning Left");
-			}
-			else if(action == 'R') {
-				this.turnRight();
-				System.out.println("Turning Right");
-			}
-			else if(action == 'M') {
-				this.move();
-				System.out.println("Moving Forward");
-			}
-			else
+		for(int i = 0; i < commands.length(); i++) {
+			Command commandToExecute = commandMap.get(commands.charAt(i));
+			boolean executedSuccesfully = commandToExecute.execute();
+			
+			if(executedSuccesfully == false)
 				return false;
 		}
 		return true;
+
+//		for(int i = 0; i< command.length() ; i++) {
+//			char action = command.charAt(i);
+//			if(action == 'L') {
+//				this.turnLeft();
+//				System.out.println("Turning Left");
+//			}
+//			else if(action == 'R') {
+//				this.turnRight();
+//				System.out.println("Turning Right");
+//			}
+//			else if(action == 'M') {
+//				this.move();
+//				System.out.println("Moving Forward");
+//			}
+//			else
+//				return false;
+//		}
+//		return true;
 	}
 	
-	protected boolean turnRight()
-	{
-		return this.cardinalManager.rotateRight();
-	}
+//	protected boolean turnRight()
+//	{
+//		return this.cardinalManager.rotateRight();
+//	}
 	
-	protected boolean turnLeft()
-	{
-		return this.cardinalManager.rotateLeft();
-	}
+//	protected boolean turnLeft()
+//	{
+//		return this.cardinalManager.rotateLeft();
+//	}
 	
-	protected boolean move()
+	/*protected boolean move()
 	{
 		Point unitPointInCurrentDirection = this.cardinalManager.getUnitPointInCurrentDirection();
 		// TODO: Handles the case 0,0 here
@@ -72,6 +95,10 @@ public class Rover {
 			return true;
 		}
 		return false;
+	}*/
+	
+	public Plateau getPlateau() {
+		return this.plateau;
 	}
 	
 	public CardinalDirection getDirection() {
@@ -80,6 +107,10 @@ public class Rover {
 	
 	public Point getPosition() {
 		return this.position;
+	}
+	
+	public void setPosition(Point newPosition) {
+		this.position = newPosition;
 	}
 	
 	@Override

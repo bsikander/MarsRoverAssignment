@@ -1,10 +1,10 @@
-package com.marsrover;
+package com.marsrover.cardinalmanager;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
-
-import com.marsrover.cardinalpoint.*;
+import com.marsrover.Point;
+import com.marsrover.cardinaldirection.*;
 
 /**
  * This class represents simple cardinal system.

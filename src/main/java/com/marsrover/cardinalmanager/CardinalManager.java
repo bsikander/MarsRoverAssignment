@@ -1,6 +1,7 @@
-package com.marsrover;
+package com.marsrover.cardinalmanager;
 
-import com.marsrover.cardinalpoint.*;
+import com.marsrover.Point;
+import com.marsrover.cardinaldirection.*;
 
 /**
  * This interface represents a simple abstraction on top of Cardinal points.

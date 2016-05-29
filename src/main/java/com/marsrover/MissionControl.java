@@ -3,6 +3,8 @@ package com.marsrover;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.marsrover.cardinalmanager.CardinalManager;
+
 public class MissionControl {
 	private List<Rover> deployedRovers;
 	
