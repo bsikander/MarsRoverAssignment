@@ -1,4 +1,4 @@
-package com.marsrover.cardinalpoint;
+package com.marsrover.cardinaldirection;
 
 import com.marsrover.Point;
 

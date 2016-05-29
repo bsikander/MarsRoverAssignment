@@ -2,8 +2,9 @@ package com.marsrover;
 
 import org.junit.Test;
 
-import com.marsrover.cardinalpoint.East;
-import com.marsrover.cardinalpoint.North;
+import com.marsrover.cardinaldirection.East;
+import com.marsrover.cardinaldirection.North;
+import com.marsrover.cardinalmanager.SimpleCardinalManager;
 
 import static org.junit.Assert.*;
 
@@ -14,27 +15,15 @@ import static org.junit.Assert.*;
  * @author Behroz Sikander
  * @version 1.0
  */
-public class TestSingleRoverNavigationFromAToB {
+public class TestSingleRoverNavigation {
 
 	@Test
 	public void testRoverMovementFrom12NTo13NUsingLMLMLMLMM() {
 		Rover rover = new Rover(new Plateau(new Point(5,5)),
 								new Point(1,2), 
 								new SimpleCardinalManager(new North()));
-		//LM LM LM LM M
-		rover.turnLeft(); 
-		rover.move();
 		
-		rover.turnLeft();
-		rover.move();
-		
-		rover.turnLeft();
-		rover.move();
-		
-		rover.turnLeft();
-		rover.move();
-		
-		rover.move();
+		rover.performActions("LMLMLMLMM");
 		
 		assertEquals(rover, new Rover(new Plateau(new Point(5,5)), 
 				  new Point(1,3), 
@@ -46,21 +35,8 @@ public class TestSingleRoverNavigationFromAToB {
 		Rover rover = new Rover(new Plateau(new Point(5,5)),
 								new Point(3,3), 
 								new SimpleCardinalManager(new East()));
-		//MM RM MR MR RM
-		rover.move();
-		rover.move();
 		
-		rover.turnRight();
-		rover.move();
-		
-		rover.move();
-		rover.turnRight();
-		
-		rover.move();
-		rover.turnRight();
-		
-		rover.turnRight();
-		rover.move();
+		rover.performActions("MMRMMRMRRM");
 		
 		assertEquals(rover, new Rover(new Plateau(new Point(5,5)), 
 				  new Point(5,1), 
@@ -73,12 +49,11 @@ public class TestSingleRoverNavigationFromAToB {
 				new Point(3,3), 
 				new SimpleCardinalManager(new East()));
 		
-		rover.move();
-		
 		// This move tries to move the rover to (5,3) whereas the plateau is only of
 		// (4,4). The move command is illegal which results in a failure.
-		boolean wrongMoveResult = rover.move();
-		assertEquals(false, wrongMoveResult);
+		boolean result = rover.performActions("MM");
+		
+		assertEquals(false, result);
 	}
 
 	@Test
@@ -87,36 +62,7 @@ public class TestSingleRoverNavigationFromAToB {
 								new Point(0,0), 
 								new SimpleCardinalManager(new North()));
 		
-		//MR ML MR ML MR ML MR ML MR ML MR
-		rover.move();		// Reached (0,1)
-		rover.turnRight(); 	// Direction E
-		
-		rover.move();		// Reached (1,1)
-		rover.turnLeft(); 	// Direction N
-		
-		rover.move();		// Reached (1,2)
-		rover.turnRight(); 	// Direction E
-		
-		rover.move();		// Reached (2,2)
-		rover.turnLeft(); 	// Direction N
-		
-		rover.move();		// Reached (2,3)
-		rover.turnRight(); 	// Direction E
-		
-		rover.move();		// Reached (3,3)
-		rover.turnLeft(); 	// Direction N
-		
-		rover.move();		// Reached (3,4)
-		rover.turnRight(); 	// Direction E
-		
-		rover.move();		// Reached (4,4)
-		rover.turnLeft(); 	// Direction N
-		
-		rover.move();		// Reached (4,5)
-		rover.turnRight(); 	// Direction E
-		
-		rover.move();		// Reached (5,5)
-		rover.turnLeft(); 	// Direction N
+		rover.performActions("MRMLMRMLMRMLMRMLMRMLMR");
 		
 		assertEquals(rover, new Rover(new Plateau(new Point(5,5)), 
 				  new Point(5,5), 

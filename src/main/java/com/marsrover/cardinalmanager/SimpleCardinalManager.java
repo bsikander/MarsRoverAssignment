@@ -1,13 +1,13 @@
-package com.marsrover;
+package com.marsrover.cardinalmanager;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
-
-import com.marsrover.cardinalpoint.*;
+import com.marsrover.Point;
+import com.marsrover.cardinaldirection.*;
 
 /**
- * This class represents simple cardinal system.
+ * This class represents simple cardinal system (N,E,S,W).
  * 
  * @author Behroz Sikander
  * @version 1.0
@@ -16,7 +16,7 @@ public class SimpleCardinalManager implements CardinalManager {
 	private final int LEFT_OFFSET = 270;
 	private final int RIGHT_OFFSET = 90;
 	
-	private CardinalDirection cardinalPoint;
+	private CardinalDirection cardinalDirection;
 	private static List<CardinalDirection> cardinalPoints = Arrays.asList(
 																		new North(), 
 																		new East(), 
@@ -24,14 +24,14 @@ public class SimpleCardinalManager implements CardinalManager {
 																		new West()
 																	 );
 		
-	public SimpleCardinalManager(CardinalDirection direction) {
-		this.cardinalPoint = direction;
+	public SimpleCardinalManager(CardinalDirection initialDirection) {
+		this.cardinalDirection = initialDirection;
 	}
 	
 	@Override
 	public CardinalDirection getCardinalDirection()
 	{
-		return this.cardinalPoint;
+		return this.cardinalDirection;
 	}
 	
 	@Override
@@ -46,16 +46,16 @@ public class SimpleCardinalManager implements CardinalManager {
 	
 	@Override
 	public Point getUnitPointInCurrentDirection() {
-		return this.cardinalPoint.getUnitBlock();
+		return this.cardinalDirection.getUnitBlock();
 	}
 	
 	private boolean rotate(int offset) {
 		CardinalDirection newCardinalPoint = this.getCardinalPointAgainstDegrees(
-															this.cardinalPoint.rotate(/* offset */ offset)
+															this.cardinalDirection.rotate(offset)
 																			);
 		
 		if(newCardinalPoint.isValid()) {
-			this.cardinalPoint = newCardinalPoint;
+			this.cardinalDirection = newCardinalPoint;
 			return true;
 		}
 		return false;

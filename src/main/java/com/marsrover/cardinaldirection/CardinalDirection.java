@@ -1,16 +1,16 @@
-package com.marsrover.cardinalpoint;
+package com.marsrover.cardinaldirection;
 
 import com.marsrover.Point;
 
 public abstract class CardinalDirection {
-	protected char direction;
+	protected char directionSymbol;
 	protected int degrees;
 	protected Point unitBlock;
 	
-	public CardinalDirection(char direction, int degrees, Point oneGridBlock) {
-		this.direction = direction;
+	public CardinalDirection(char directionSymbol, int degrees, Point unitBlock) {
+		this.directionSymbol = directionSymbol;
 		this.degrees = degrees;
-		this.unitBlock = oneGridBlock;
+		this.unitBlock = unitBlock;
 	}
 	
 	public int rotate(int offset) {
@@ -26,7 +26,7 @@ public abstract class CardinalDirection {
 	}
 	
 	public boolean isValid() {
-		return this.direction != ' ';
+		return this.directionSymbol != ' ';
 	}
 	
 	@Override
@@ -36,7 +36,7 @@ public abstract class CardinalDirection {
 		if(!(other instanceof CardinalDirection)) return false;
 		
 		CardinalDirection otherPoint = (CardinalDirection)other;
-		if (this.direction == otherPoint.direction && this.degrees == otherPoint.degrees)
+		if (this.directionSymbol == otherPoint.directionSymbol && this.degrees == otherPoint.degrees)
 			return true;
 			
 		return false;
@@ -47,13 +47,13 @@ public abstract class CardinalDirection {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + degrees;
-		result = prime * result + direction;
+		result = prime * result + directionSymbol;
 		
 		return result;
 	}
 	
 	@Override
 	public String toString() {
-        return "(" + this.direction + ", " + this.degrees + ")";
+        return "(" + this.directionSymbol + ", " + this.degrees + ")";
     }		
 }

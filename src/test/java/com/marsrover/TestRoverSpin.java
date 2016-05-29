@@ -2,10 +2,11 @@ package com.marsrover;
 
 import org.junit.Test;
 
-import com.marsrover.cardinalpoint.East;
-import com.marsrover.cardinalpoint.North;
-import com.marsrover.cardinalpoint.South;
-import com.marsrover.cardinalpoint.West;
+import com.marsrover.cardinaldirection.East;
+import com.marsrover.cardinaldirection.North;
+import com.marsrover.cardinaldirection.South;
+import com.marsrover.cardinaldirection.West;
+import com.marsrover.cardinalmanager.SimpleCardinalManager;
 
 import static org.junit.Assert.*;
 
@@ -23,8 +24,9 @@ public class TestRoverSpin {
 	  Rover rover = new Rover(new Plateau(new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalManager(new East()));
-	  rover.turnRight();
-	  rover.getDirection().toString();
+	  
+	  rover.performActions("R");
+	  
 	  assertEquals(new South(), rover.getDirection());
 	}
 	
@@ -33,7 +35,9 @@ public class TestRoverSpin {
 	  Rover rover = new Rover(new Plateau(new Point(5,5)), 
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalManager(new West()));
-	  rover.turnRight();
+
+	  rover.performActions("R");
+	  
 	  assertEquals(new North(), rover.getDirection());
 	}
 	
@@ -42,7 +46,9 @@ public class TestRoverSpin {
 	  Rover rover = new Rover(new Plateau(new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalManager(new South()));
-	  rover.turnLeft();
+	  
+	  rover.performActions("L");
+	  
 	  assertEquals(new East(), rover.getDirection());
 	}
 	
@@ -51,7 +57,9 @@ public class TestRoverSpin {
 	  Rover rover = new Rover(new Plateau(new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalManager(new North()));
-	  rover.turnLeft();
+	  
+	  rover.performActions("L");
+	  
 	  assertEquals(new West(), rover.getDirection());
 	}
 }

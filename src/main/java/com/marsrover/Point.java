@@ -1,7 +1,7 @@
 package com.marsrover;
 
 /**
- * This class presents the mutable reusable implementation of 2d Point.  
+ * This class presents the immutable reusable implementation of 2d Point.  
  * It also implements the Comparable interface for comparing two points.
  * 
  * @author Behroz Sikander
@@ -64,7 +64,7 @@ public class Point implements Comparable<Point> {
 	 *          0 if both points are same
 	 */
 	@Override
-	public int compareTo(Point that) {
+	public int compareTo(final Point that) {
 		if(that == null) return -1;
 		if(this.x == that.x && this.y == that.y) return 0;
 		if(this.x > that.x  && this.y > that.y) return +1;

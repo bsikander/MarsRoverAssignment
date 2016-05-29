@@ -1,11 +1,20 @@
 package com.marsrover;
 
-import com.marsrover.cardinalpoint.CardinalDirection;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.marsrover.cardinaldirection.CardinalDirection;
+import com.marsrover.cardinalmanager.CardinalManager;
+import com.marsrover.commands.Command;
+import com.marsrover.commands.MoveForward;
+import com.marsrover.commands.TurnLeft;
+import com.marsrover.commands.TurnRight;
 
 /**
- * This class represents a Rover and all of its possible actions. Instead of directly
+ * This class represents a Rover. Instead of directly
  * manipulating the cardinal points, this class uses an abstraction on top to avoid
- * change (e.g. this program can be extended to use intermediate directions N,NE,E,...).  
+ * change (e.g. this program can be extended to use intermediate directions N,NE,E,...).
+ * This class also uses strategy pattern to handle commands passed by MissionControl class.  
  * 
  * @author Behroz Sikander
  * @version 1.0
@@ -15,41 +24,34 @@ public class Rover {
 	private CardinalManager cardinalManager;
 	private Point position;
 	private Plateau plateau;
+	private Map<Character, Command> roverCommands;	
 	
 	public Rover(Plateau plateau, Point position, CardinalManager direction)
 	{
 		this.cardinalManager = direction;
 		this.position = position;
 		this.plateau = plateau;
+		
+		roverCommands = new HashMap<>();
+		roverCommands.put('L', new TurnLeft(this.cardinalManager));
+		roverCommands.put('R', new TurnRight(this.cardinalManager));
+		roverCommands.put('M', new MoveForward(this));
 	}
 	
-	public boolean turnRight()
-	{
-		return this.cardinalManager.rotateRight();
-	}
-	
-	public boolean turnLeft()
-	{
-		return this.cardinalManager.rotateLeft();
-	}
-	
-	public boolean move()
-	{
-		Point unitPointInCurrentDirection = this.cardinalManager.getUnitPointInCurrentDirection();
-		// TODO: Handles the case 0,0 here
+	public boolean performActions(String actions) {
 		
-		// Create a temporary point object because we first want to verify if the
-		// rover is in plateau or not. Once we have verified and it is in plateau,
-		// we will assign the new temporary position to the current position of rover.
-		Point newProposedRoverPosition = this.position.add(unitPointInCurrentDirection);
-		
-		boolean isRoverInPlateau = this.plateau.contains(newProposedRoverPosition);
-		
-		if(isRoverInPlateau) {
-			this.position = newProposedRoverPosition;
-			return true;
+		for(int i = 0; i < actions.length(); i++) {
+			Command roverActionToPerform = roverCommands.get(actions.charAt(i));
+			boolean isActionSuccessful = roverActionToPerform.execute();
+			
+			if(isActionSuccessful == false)
+				return false;
 		}
-		return false;
+		return true;
+	}
+	
+	public Plateau getPlateau() {
+		return this.plateau;
 	}
 	
 	public CardinalDirection getDirection() {
@@ -58,6 +60,10 @@ public class Rover {
 	
 	public Point getPosition() {
 		return this.position;
+	}
+	
+	public void setPosition(Point newPosition) {
+		this.position = newPosition;
 	}
 	
 	@Override
