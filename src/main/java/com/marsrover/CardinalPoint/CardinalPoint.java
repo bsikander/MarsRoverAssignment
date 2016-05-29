@@ -1,24 +1,24 @@
-package com.marsrover.CardinalPoint;
+package com.marsrover.cardinalpoint;
 
 import com.marsrover.Point;
 
 public abstract class CardinalPoint {
 	protected char direction;
 	protected int degrees;
-	protected Point oneGridBlock;
+	protected Point unitBlock;
 	
 	public CardinalPoint(char direction, int degrees, Point oneGridBlock) {
 		this.direction = direction;
 		this.degrees = degrees;
-		this.oneGridBlock = oneGridBlock;
+		this.unitBlock = oneGridBlock;
 	}
 	
 	public int rotate(int offset) {
 		return ((this.degrees + offset) % 360);
 	}
 	
-	public Point getOneGridBlock() {
-		return this.oneGridBlock;
+	public Point getUnitBlock() {
+		return this.unitBlock;
 	}
 	
 	public boolean compareDegrees(int degree) {

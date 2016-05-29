@@ -3,7 +3,7 @@ package com.marsrover;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.marsrover.CardinalPoint.*;
+import com.marsrover.cardinalpoint.*;
 
 /**
  * This class represents simple cardinal system.
@@ -14,7 +14,7 @@ import com.marsrover.CardinalPoint.*;
 public class SimpleCardinalManager implements CardinalManager {
 	
 	private CardinalPoint cardinalPoint;
-	private static final List<CardinalPoint> cardinalPoints = new ArrayList<CardinalPoint>();
+	private static final List<CardinalPoint> cardinalPoints = new ArrayList<>();
 	
 	static
 	{
@@ -45,8 +45,8 @@ public class SimpleCardinalManager implements CardinalManager {
 	}
 	
 	@Override
-	public Point getOneGridPointInCurrentDirection() {
-		return this.cardinalPoint.getOneGridBlock();
+	public Point getUnitPointInCurrentDirection() {
+		return this.cardinalPoint.getUnitBlock();
 	}
 	
 	private boolean rotate(int offset) {

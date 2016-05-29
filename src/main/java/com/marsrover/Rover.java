@@ -1,6 +1,6 @@
 package com.marsrover;
 
-import com.marsrover.CardinalPoint.CardinalPoint;
+import com.marsrover.cardinalpoint.CardinalPoint;
 
 /**
  * This class represents a Rover and all of its possible actions. Instead of directly
@@ -35,14 +35,14 @@ public class Rover {
 	
 	public boolean move()
 	{
-		Point nextPointInCurrentDirection = this.cardinalManager.getOneGridPointInCurrentDirection();
+		Point unitPointInCurrentDirection = this.cardinalManager.getUnitPointInCurrentDirection();
 		// TODO: Handles the case 0,0 here
 		
 		// Create a temporary point object because we first want to verify if the
 		// rover is in plateau or not. Once we have verified and it is in plateau,
 		// we will assign the new temporary position to the current position of rover.
 		Point newProposedRoverPosition = new Point(this.position);
-		newProposedRoverPosition.add(nextPointInCurrentDirection);
+		newProposedRoverPosition.add(unitPointInCurrentDirection);
 		
 		boolean isRoverInPlateau = this.plateau.contains(newProposedRoverPosition);
 		

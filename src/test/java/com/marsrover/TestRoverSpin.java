@@ -2,10 +2,10 @@ package com.marsrover;
 
 import org.junit.Test;
 
-import com.marsrover.CardinalPoint.East;
-import com.marsrover.CardinalPoint.North;
-import com.marsrover.CardinalPoint.South;
-import com.marsrover.CardinalPoint.West;
+import com.marsrover.cardinalpoint.East;
+import com.marsrover.cardinalpoint.North;
+import com.marsrover.cardinalpoint.South;
+import com.marsrover.cardinalpoint.West;
 
 import static org.junit.Assert.*;
 
