@@ -7,7 +7,7 @@ import com.marsrover.Point;
 import com.marsrover.cardinaldirection.*;
 
 /**
- * This class represents simple cardinal system.
+ * This class represents simple cardinal system (N,E,S,W).
  * 
  * @author Behroz Sikander
  * @version 1.0
@@ -24,8 +24,8 @@ public class SimpleCardinalManager implements CardinalManager {
 																		new West()
 																	 );
 		
-	public SimpleCardinalManager(CardinalDirection direction) {
-		this.cardinalDirection = direction;
+	public SimpleCardinalManager(CardinalDirection initialDirection) {
+		this.cardinalDirection = initialDirection;
 	}
 	
 	@Override

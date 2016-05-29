@@ -4,7 +4,9 @@ import com.marsrover.Point;
 import com.marsrover.cardinaldirection.*;
 
 /**
- * This interface represents a simple abstraction on top of Cardinal points.
+ * This interface represents a simple abstraction on top of rover's Cardinal management.
+ * Whenever rover has to change it direction, it contacts the concrete implementation of
+ * CardinalManager.
  * 
  * @author Behroz Sikander
  * @version 1.0

@@ -1,18 +1,21 @@
 package com.marsrover;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
-
 import com.marsrover.cardinaldirection.*;
 import com.marsrover.cardinalmanager.SimpleCardinalManager;
 
 public class TestRoverSquadNavigation {
 
 	@Test
-	public void testRoverNavigation() {
+	public void testRoverSquadNavigation() {
 		MissionControl missionControl = new MissionControl();
-		Rover deployedRover = missionControl.deployRover(new Plateau(new Point(5,5)), 
+		Plateau plateau = new Plateau(new Point(5,5));
+		
+		// Start - Rover 1
+		// 1 2 N
+        // LMLMLMLMM
+		Rover deployedRover = missionControl.deployRover(plateau, 
 														 new Point(1,2), 
 														 new SimpleCardinalManager(new North()));
 		
@@ -21,8 +24,12 @@ public class TestRoverSquadNavigation {
 		assertEquals(deployedRover, new Rover(new Plateau(new Point(5,5)), 
 				  							  new Point(1,3), 
 				  							  new SimpleCardinalManager(new North())));
+		// End - Rover 1
 		
-		deployedRover = missionControl.deployRover(new Plateau(new Point(5,5)), 
+		// Start - Rover 2
+		// 3 3 E
+		// MMRMMRMRRM
+		deployedRover = missionControl.deployRover(plateau, 
 								   new Point(3,3), 
 								   new SimpleCardinalManager(new East()));
 		
@@ -31,7 +38,7 @@ public class TestRoverSquadNavigation {
 		assertEquals(deployedRover, new Rover(new Plateau(new Point(5,5)), 
 				  					new Point(5,1), 
 				  					new SimpleCardinalManager(new East())));
-		
+		// End - Rover 2
 	}
 
 }

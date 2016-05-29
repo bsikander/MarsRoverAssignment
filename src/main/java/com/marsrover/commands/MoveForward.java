@@ -14,7 +14,6 @@ public class MoveForward implements Command {
 	@Override
 	public boolean execute() {
 		Point unitPointInCurrentDirection = this.rover.getDirection().getUnitBlock();
-		// TODO: Handles the case 0,0 here
 		
 		// Create a temporary point object because we first want to verify if the
 		// rover is in plateau or not. Once we have verified and it is in plateau,
