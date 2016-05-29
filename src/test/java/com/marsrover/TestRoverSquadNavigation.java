@@ -5,6 +5,12 @@ import static org.junit.Assert.*;
 import com.marsrover.cardinaldirection.*;
 import com.marsrover.cardinalmanager.SimpleCardinalManager;
 
+/**
+ * This class is responsible for verifying navigation of rover squad. 
+ * 
+ * @author Behroz Sikander
+ * @version 1.0
+ */
 public class TestRoverSquadNavigation {
 
 	@Test
