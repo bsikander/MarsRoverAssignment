@@ -27,10 +27,11 @@ public class Point implements Comparable<Point> {
 	 * 
 	 * @param newPoint The Point which needs to be added.
 	 */
-	public void add(Point newPoint) {
-		
-		this.x += newPoint.x;
-		this.y += newPoint.y;
+	public Point add(Point newPoint) {
+		return new Point(
+							this.x + newPoint.x, 
+							this.y + newPoint.y
+						);
 	}
 	
 	@Override
@@ -45,6 +46,15 @@ public class Point implements Comparable<Point> {
 			
 		return false;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}	
 
 	/**
 	 * Compares two points to figure out which point lie higher than the other.

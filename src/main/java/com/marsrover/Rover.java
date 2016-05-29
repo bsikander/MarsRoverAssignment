@@ -41,8 +41,7 @@ public class Rover {
 		// Create a temporary point object because we first want to verify if the
 		// rover is in plateau or not. Once we have verified and it is in plateau,
 		// we will assign the new temporary position to the current position of rover.
-		Point newProposedRoverPosition = new Point(this.position);
-		newProposedRoverPosition.add(unitPointInCurrentDirection);
+		Point newProposedRoverPosition = this.position.add(unitPointInCurrentDirection);
 		
 		boolean isRoverInPlateau = this.plateau.contains(newProposedRoverPosition);
 		

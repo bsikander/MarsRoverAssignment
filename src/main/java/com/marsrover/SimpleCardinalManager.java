@@ -1,6 +1,7 @@
 package com.marsrover;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.marsrover.cardinalpoint.*;
@@ -16,16 +17,13 @@ public class SimpleCardinalManager implements CardinalManager {
 	private final int RIGHT_OFFSET = 90;
 	
 	private CardinalPoint cardinalPoint;
-	private static final List<CardinalPoint> cardinalPoints = new ArrayList<>();
-	
-	static
-	{
-		cardinalPoints.add(new North());
-		cardinalPoints.add(new East());
-		cardinalPoints.add(new South());
-		cardinalPoints.add(new West());
-	}
-	
+	private static List<CardinalPoint> cardinalPoints = Arrays.asList(
+																		new North(), 
+																		new East(), 
+																		new South(), 
+																		new West()
+																	 );
+		
 	public SimpleCardinalManager(CardinalPoint direction) {
 		this.cardinalPoint = direction;
 	}
