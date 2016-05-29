@@ -20,7 +20,7 @@ public class TestRoverSpin {
 
 	@Test
 	public void testRoverRightTurnFromEastToSouth() {
-	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
+	  Rover rover = new Rover(new Plateau(new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalManager(new East()));
 	  rover.turnRight();
@@ -30,7 +30,7 @@ public class TestRoverSpin {
 	
 	@Test
 	public void testRoverRightTurnFromWestToNorth() {
-	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
+	  Rover rover = new Rover(new Plateau(new Point(5,5)), 
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalManager(new West()));
 	  rover.turnRight();
@@ -39,7 +39,7 @@ public class TestRoverSpin {
 	
 	@Test
 	public void testRoverLeftTurnFromSouthToEast() {
-	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
+	  Rover rover = new Rover(new Plateau(new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalManager(new South()));
 	  rover.turnLeft();
@@ -48,7 +48,7 @@ public class TestRoverSpin {
 	
 	@Test
 	public void testRoverLeftTurnFromNorthToWest() {
-	  Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
+	  Rover rover = new Rover(new Plateau(new Point(5,5)),
 			  				  new Point(0,0), 
 			  				  new SimpleCardinalManager(new North()));
 	  rover.turnLeft();

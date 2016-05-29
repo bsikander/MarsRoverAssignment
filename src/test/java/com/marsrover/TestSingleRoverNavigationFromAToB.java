@@ -18,7 +18,7 @@ public class TestSingleRoverNavigationFromAToB {
 
 	@Test
 	public void testRoverMovementFrom12NTo13NUsingLMLMLMLMM() {
-		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
+		Rover rover = new Rover(new Plateau(new Point(5,5)),
 								new Point(1,2), 
 								new SimpleCardinalManager(new North()));
 		//LM LM LM LM M
@@ -36,14 +36,14 @@ public class TestSingleRoverNavigationFromAToB {
 		
 		rover.move();
 		
-		assertEquals(rover, new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
+		assertEquals(rover, new Rover(new Plateau(new Point(5,5)), 
 				  new Point(1,3), 
 				  new SimpleCardinalManager(new North())));
 	}
 	
 	@Test
 	public void testRoverMovementFrom33ETo51EUsingMMRMMRMRRM() {
-		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
+		Rover rover = new Rover(new Plateau(new Point(5,5)),
 								new Point(3,3), 
 								new SimpleCardinalManager(new East()));
 		//MM RM MR MR RM
@@ -62,14 +62,14 @@ public class TestSingleRoverNavigationFromAToB {
 		rover.turnRight();
 		rover.move();
 		
-		assertEquals(rover, new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
+		assertEquals(rover, new Rover(new Plateau(new Point(5,5)), 
 				  new Point(5,1), 
 				  new SimpleCardinalManager(new East())));
 	}
 	
 	@Test
 	public void testRoverMovementFrom33ETo53EUsingMMRMMRMRRMOnPlateauOfSize44ShouldFail() {
-		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(4,4)),
+		Rover rover = new Rover(new Plateau(new Point(4,4)),
 				new Point(3,3), 
 				new SimpleCardinalManager(new East()));
 		
@@ -83,7 +83,7 @@ public class TestSingleRoverNavigationFromAToB {
 
 	@Test
 	public void testRoverMovementFrom00NTo55NUsingMRMLMRMLMRMLMRMLMRMLMR() {
-		Rover rover = new Rover(new Plateau(new Point(0,0), new Point(5,5)),
+		Rover rover = new Rover(new Plateau(new Point(5,5)),
 								new Point(0,0), 
 								new SimpleCardinalManager(new North()));
 		
@@ -118,7 +118,7 @@ public class TestSingleRoverNavigationFromAToB {
 		rover.move();		// Reached (5,5)
 		rover.turnLeft(); 	// Direction N
 		
-		assertEquals(rover, new Rover(new Plateau(new Point(0,0), new Point(5,5)), 
+		assertEquals(rover, new Rover(new Plateau(new Point(5,5)), 
 				  new Point(5,5), 
 				  new SimpleCardinalManager(new North())));
 	}
