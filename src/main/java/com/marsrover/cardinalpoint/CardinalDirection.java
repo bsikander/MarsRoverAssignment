@@ -2,12 +2,12 @@ package com.marsrover.cardinalpoint;
 
 import com.marsrover.Point;
 
-public abstract class CardinalPoint {
+public abstract class CardinalDirection {
 	protected char direction;
 	protected int degrees;
 	protected Point unitBlock;
 	
-	public CardinalPoint(char direction, int degrees, Point oneGridBlock) {
+	public CardinalDirection(char direction, int degrees, Point oneGridBlock) {
 		this.direction = direction;
 		this.degrees = degrees;
 		this.unitBlock = oneGridBlock;
@@ -33,9 +33,9 @@ public abstract class CardinalPoint {
 	public boolean equals(Object other) {
 		if(other == null) return false;
 		if(other == this) return true;
-		if(!(other instanceof CardinalPoint)) return false;
+		if(!(other instanceof CardinalDirection)) return false;
 		
-		CardinalPoint otherPoint = (CardinalPoint)other;
+		CardinalDirection otherPoint = (CardinalDirection)other;
 		if (this.direction == otherPoint.direction && this.degrees == otherPoint.degrees)
 			return true;
 			

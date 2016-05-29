@@ -9,7 +9,7 @@ import com.marsrover.cardinalpoint.*;
  * @version 1.0
  */
 public interface CardinalManager {
-	public CardinalPoint getCardinalPoint();
+	public CardinalDirection getCardinalDirection();
 	public boolean rotateLeft();
 	public boolean rotateRight();
 	public Point getUnitPointInCurrentDirection();

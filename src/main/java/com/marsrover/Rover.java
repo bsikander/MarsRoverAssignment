@@ -1,6 +1,6 @@
 package com.marsrover;
 
-import com.marsrover.cardinalpoint.CardinalPoint;
+import com.marsrover.cardinalpoint.CardinalDirection;
 
 /**
  * This class represents a Rover and all of its possible actions. Instead of directly
@@ -52,8 +52,8 @@ public class Rover {
 		return false;
 	}
 	
-	public CardinalPoint getDirection() {
-		return this.cardinalManager.getCardinalPoint(); 
+	public CardinalDirection getDirection() {
+		return this.cardinalManager.getCardinalDirection(); 
 	}
 	
 	public Point getPosition() {
@@ -68,9 +68,21 @@ public class Rover {
 		
 		Rover otherRover = (Rover)other;
 		if (this.position.equals(otherRover.position) &&
-			this.cardinalManager.getCardinalPoint().equals(otherRover.getDirection()))
+			this.cardinalManager.getCardinalDirection().equals(otherRover.getDirection()))
 			return true;
 		
 		return false;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((cardinalManager == null) ? 0 : cardinalManager.getCardinalDirection().hashCode());
+		result = prime * result
+				+ ((position == null) ? 0 : position.hashCode());
+		return result;
+	}
+	
 }
