@@ -21,7 +21,9 @@ public class MissionControl {
 	
 	/**
 	 * Last Rover added to the list is the currently active Rover. So, this function
-	 * pulls that rover out of the list and sends commands to it.
+	 * pulls that rover out of the list and sends commands to it. Since the current
+	 * rover is performing actions, no other rover can start its processing.
+	 * 
 	 * @param command The list of commands to be sent to the rover
 	 * @return True, if the actions were performed successfully false otherwise
 	 */
