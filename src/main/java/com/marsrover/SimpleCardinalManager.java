@@ -12,6 +12,8 @@ import com.marsrover.cardinalpoint.*;
  * @version 1.0
  */
 public class SimpleCardinalManager implements CardinalManager {
+	private final int LEFT_OFFSET = 270;
+	private final int RIGHT_OFFSET = 90;
 	
 	private CardinalPoint cardinalPoint;
 	private static final List<CardinalPoint> cardinalPoints = new ArrayList<>();
@@ -36,12 +38,12 @@ public class SimpleCardinalManager implements CardinalManager {
 	
 	@Override
 	public boolean rotateLeft() {
-		return this.rotate(/* offset */ 270);
+		return this.rotate(this.LEFT_OFFSET);
 	}
 
 	@Override
 	public boolean rotateRight() {
-		return this.rotate(/* offset */ 90);
+		return this.rotate(this.RIGHT_OFFSET);
 	}
 	
 	@Override

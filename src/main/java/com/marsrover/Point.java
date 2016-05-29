@@ -8,17 +8,17 @@ package com.marsrover;
  * @version 1.0
  */
 public class Point implements Comparable<Point> {
-	private int xCoordinate;
-	private int yCoordinate;
+	private int x;
+	private int y;
 	
 	public Point(int xCoordinate, int yCoordinate) {
-		this.xCoordinate = xCoordinate;
-		this.yCoordinate = yCoordinate;
+		this.x = xCoordinate;
+		this.y = yCoordinate;
 	}
 	
 	public Point(Point point) {
-		this.xCoordinate = point.xCoordinate;
-		this.yCoordinate = point.yCoordinate;
+		this.x = point.x;
+		this.y = point.y;
 	}
 	
 	/**
@@ -29,8 +29,8 @@ public class Point implements Comparable<Point> {
 	 */
 	public void add(Point newPoint) {
 		
-		this.xCoordinate += newPoint.xCoordinate;
-		this.yCoordinate += newPoint.yCoordinate;
+		this.x += newPoint.x;
+		this.y += newPoint.y;
 	}
 	
 	@Override
@@ -40,7 +40,7 @@ public class Point implements Comparable<Point> {
 		if(!(other instanceof Point)) return false;
 		
 		Point otherPoint = (Point)other;
-		if (this.xCoordinate == otherPoint.xCoordinate && this.yCoordinate == otherPoint.yCoordinate)
+		if (this.x == otherPoint.x && this.y == otherPoint.y)
 			return true;
 			
 		return false;
@@ -55,16 +55,16 @@ public class Point implements Comparable<Point> {
 	 */
 	@Override
 	public int compareTo(Point that) {
-		if(this.xCoordinate == that.xCoordinate && this.yCoordinate == that.yCoordinate) return 0;
-		if(this.xCoordinate > that.xCoordinate  && this.yCoordinate > that.yCoordinate) return +1;
-		if(this.xCoordinate > that.xCoordinate  && this.yCoordinate == that.yCoordinate) return +1;
-		if(this.xCoordinate == that.xCoordinate && this.yCoordinate > that.yCoordinate) return +1;
+		if(this.x == that.x && this.y == that.y) return 0;
+		if(this.x > that.x  && this.y > that.y) return +1;
+		if(this.x > that.x  && this.y == that.y) return +1;
+		if(this.x == that.x && this.y > that.y) return +1;
 		
 		return -1;
 	}
 	
 	@Override
 	public String toString() {
-        return "(" + this.xCoordinate + ", " + this.yCoordinate + ")";
+        return "(" + this.x + ", " + this.y + ")";
     }
 }
