@@ -7,10 +7,10 @@ public abstract class CardinalDirection {
 	protected int degrees;
 	protected Point unitBlock;
 	
-	public CardinalDirection(char direction, int degrees, Point oneGridBlock) {
+	public CardinalDirection(char direction, int degrees, Point unitBlock) {
 		this.direction = direction;
 		this.degrees = degrees;
-		this.unitBlock = oneGridBlock;
+		this.unitBlock = unitBlock;
 	}
 	
 	public int rotate(int offset) {

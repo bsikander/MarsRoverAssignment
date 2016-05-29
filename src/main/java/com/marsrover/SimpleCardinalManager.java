@@ -16,7 +16,7 @@ public class SimpleCardinalManager implements CardinalManager {
 	private final int LEFT_OFFSET = 270;
 	private final int RIGHT_OFFSET = 90;
 	
-	private CardinalDirection cardinalPoint;
+	private CardinalDirection cardinalDirection;
 	private static List<CardinalDirection> cardinalPoints = Arrays.asList(
 																		new North(), 
 																		new East(), 
@@ -25,13 +25,13 @@ public class SimpleCardinalManager implements CardinalManager {
 																	 );
 		
 	public SimpleCardinalManager(CardinalDirection direction) {
-		this.cardinalPoint = direction;
+		this.cardinalDirection = direction;
 	}
 	
 	@Override
 	public CardinalDirection getCardinalDirection()
 	{
-		return this.cardinalPoint;
+		return this.cardinalDirection;
 	}
 	
 	@Override
@@ -46,16 +46,16 @@ public class SimpleCardinalManager implements CardinalManager {
 	
 	@Override
 	public Point getUnitPointInCurrentDirection() {
-		return this.cardinalPoint.getUnitBlock();
+		return this.cardinalDirection.getUnitBlock();
 	}
 	
 	private boolean rotate(int offset) {
 		CardinalDirection newCardinalPoint = this.getCardinalPointAgainstDegrees(
-															this.cardinalPoint.rotate(/* offset */ offset)
+															this.cardinalDirection.rotate(offset)
 																			);
 		
 		if(newCardinalPoint.isValid()) {
-			this.cardinalPoint = newCardinalPoint;
+			this.cardinalDirection = newCardinalPoint;
 			return true;
 		}
 		return false;

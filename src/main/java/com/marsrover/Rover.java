@@ -23,17 +23,39 @@ public class Rover {
 		this.plateau = plateau;
 	}
 	
-	public boolean turnRight()
+	public boolean performActions(String command) {
+		
+		for(int i = 0; i< command.length() ; i++) {
+			char action = command.charAt(i);
+			if(action == 'L') {
+				this.turnLeft();
+				System.out.println("Turning Left");
+			}
+			else if(action == 'R') {
+				this.turnRight();
+				System.out.println("Turning Right");
+			}
+			else if(action == 'M') {
+				this.move();
+				System.out.println("Moving Forward");
+			}
+			else
+				return false;
+		}
+		return true;
+	}
+	
+	protected boolean turnRight()
 	{
 		return this.cardinalManager.rotateRight();
 	}
 	
-	public boolean turnLeft()
+	protected boolean turnLeft()
 	{
 		return this.cardinalManager.rotateLeft();
 	}
 	
-	public boolean move()
+	protected boolean move()
 	{
 		Point unitPointInCurrentDirection = this.cardinalManager.getUnitPointInCurrentDirection();
 		// TODO: Handles the case 0,0 here
