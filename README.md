@@ -37,4 +37,4 @@ The application has been developed in Java. Open the project in Eclipse, build a
 7. MissionControl is a class representing NASA and current mission. This class can deploy rovers on plateaus and can send commands to the active rover.
 
 Big picture:
-![Basic Design](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Basic Design")
+![Basic Design](https://github.com/bsikander/MarsRoverAssignment/blob/master/IMG_20160530_025531.jpg "Basic Design")
