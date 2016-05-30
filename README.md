@@ -74,11 +74,11 @@ Big picture:
 ![Basic Design](https://github.com/bsikander/MarsRoverAssignment/blob/master/IMG_20160530_025531.jpg "Basic Design")
 
 Links:
-http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value
-http://stackoverflow.com/questions/14136721/converting-many-if-else-statements-to-a-cleaner-approach
-http://stackoverflow.com/questions/12140498/acheive-strategy-pattern-when-we-have-different-return-type
-http://www.javaworld.com/article/2077424/learn-java/does-java-pass-by-reference-or-pass-by-value.html
-https://en.wikipedia.org/wiki/Cardinal_direction
-http://stackoverflow.com/questions/1551235/java-strings-compareto-vs-equals
-http://www.tutorialspoint.com/junit/junit_parameterized_test.htm
-http://www.tutorialspoint.com/java/util/arrays_aslist.htm
+1. http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value
+2. http://stackoverflow.com/questions/14136721/converting-many-if-else-statements-to-a-cleaner-approach
+3. http://stackoverflow.com/questions/12140498/acheive-strategy-pattern-when-we-have-different-return-type
+4. http://www.javaworld.com/article/2077424/learn-java/does-java-pass-by-reference-or-pass-by-value.html
+5. https://en.wikipedia.org/wiki/Cardinal_direction
+6. http://stackoverflow.com/questions/1551235/java-strings-compareto-vs-equals
+7. http://www.tutorialspoint.com/junit/junit_parameterized_test.htm
+8. http://www.tutorialspoint.com/java/util/arrays_aslist.htm
