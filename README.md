@@ -75,10 +75,17 @@ Big picture:
 
 # Links:
 [Java Pass by reference or Value](http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value)
+
 [Strategy Pattern for replacing if/else](http://stackoverflow.com/questions/14136721/converting-many-if-else-statements-to-a-cleaner-approach)
+
 [Return Different types while using Strategy Pattern](http://stackoverflow.com/questions/12140498/acheive-strategy-pattern-when-we-have-different-return-type)
+
 [Java pass by value or reference](http://www.javaworld.com/article/2077424/learn-java/does-java-pass-by-reference-or-pass-by-value.html)
+
 [Cardinal Directions](https://en.wikipedia.org/wiki/Cardinal_direction)
+
 [CompareTo vs Equals](http://stackoverflow.com/questions/1551235/java-strings-compareto-vs-equals)
+
 [Junit Parameterized Unit Tests](http://www.tutorialspoint.com/junit/junit_parameterized_test.htm)
+
 [Array.asList](http://www.tutorialspoint.com/java/util/arrays_aslist.htm)
