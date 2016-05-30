@@ -67,7 +67,7 @@ public class SimpleCardinalManager implements CardinalManager {
 				return cardinalPoint;
 			}
 		}
-		return new NullCardinalPoint();
+		return new NullCardinalDirection();
 	}
 
 }

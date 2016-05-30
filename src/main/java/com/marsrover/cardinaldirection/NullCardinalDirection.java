@@ -2,9 +2,9 @@ package com.marsrover.cardinaldirection;
 
 import com.marsrover.Point;
 
-public class NullCardinalPoint extends CardinalDirection {
+public class NullCardinalDirection extends CardinalDirection {
 	
-	public NullCardinalPoint() {
+	public NullCardinalDirection() {
 		super(' ', 0, new Point(0,0));
 	}
 	
